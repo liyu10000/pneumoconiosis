@@ -1,0 +1,28 @@
+数据样例 (Data_Entry_2017.csv),,,,,,,,,,,
+,Image Index,Finding Labels,Follow-up #,Patient ID,Patient Age,Patient Gender,View Position,OriginalImage[Width,Height],OriginalImagePixelSpacing[x,y]
+,00000001_000.png,Cardiomegaly,0,1,58,M,PA,2682,2749,0.143,0.143
+,00000001_001.png,Cardiomegaly|Emphysema,1,1,58,M,PA,2894,2729,0.143,0.143
+,00000001_002.png,Cardiomegaly|Effusion,2,1,58,M,PA,2500,2048,0.168,0.168
+,00000002_000.png,No Finding,0,2,81,M,PA,2500,2048,0.171,0.171
+,00000003_000.png,Hernia,0,3,81,F,PA,2582,2991,0.143,0.143
+,00000003_001.png,Hernia,1,3,74,F,PA,2500,2048,0.168,0.168
+,00000003_002.png,Hernia,2,3,75,F,PA,2048,2500,0.168,0.168
+总数,112120,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+分类,,标签,(注：有的病例有多个标签),,,,,,,,
+normal,60361,No Finding,60361,,,,,,,,
+abnormal,51759,Infiltration,19894,,,,,,,,
+,,Atelectasis,11559,,,,,,,,
+,,Edema,2303,,,,,,,,
+,,Pneumothorax,5302,,,,,,,,
+,,Pneumonia,1431,,,,,,,,
+,,Effusion,13317,,,,,,,,
+,,Emphysema,2516,,,,,,,,
+,,Cardiomegaly,2776,,,,,,,,
+,,Fibrosis,1686,,,,,,,,
+,,Hernia,227,,,,,,,,
+,,Consolidation,4667,,,,,,,,
+,,Nodule,6331,,,,,,,,
+,,Pleural_Thickening,3385,,,,,,,,
+,,Mass,5782,,,,,,,,
