@@ -69,7 +69,7 @@ class ModelFactory:
 
         base_model_class = getattr(
             importlib.import_module(
-                f"keras.applications.{self.models_[model_name]['module_name']}"
+                "keras.applications.{}".format(self.models_[model_name]['module_name'])
             ),
             model_name)
 
@@ -92,6 +92,6 @@ class ModelFactory:
             weights_path = None
 
         if weights_path is not None:
-            print(f"load model weights_path: {weights_path}")
+            print("load model weights_path: {}".format(weights_path))
             model.load_weights(weights_path)
         return model

@@ -30,7 +30,7 @@ def main():
     # parse weights file path
     output_weights_name = cp["TRAIN"].get("output_weights_name")
     weights_path = os.path.join(output_dir, output_weights_name)
-    best_weights_path = os.path.join(output_dir, f"best_{output_weights_name}")
+    best_weights_path = os.path.join(output_dir, "best_{}".format(output_weights_name))
 
     # get test sample count
     test_counts, _ = get_sample_counts(output_dir, "test", class_names)
@@ -42,11 +42,11 @@ def main():
         try:
             test_steps = int(test_steps)
         except ValueError:
-            raise ValueError(f"""
-                test_steps: {test_steps} is invalid,
+            raise ValueError("""
+                test_steps: {} is invalid,
                 please use 'auto' or integer.
-                """)
-    print(f"** test_steps: {test_steps} **")
+                """.format(test_steps))
+    print("** test_steps: {} **".format(test_steps))
 
     print("** load model **")
     if use_best_weights:
@@ -79,7 +79,7 @@ def main():
     y = test_sequence.get_y_true()
 
     test_log_path = os.path.join(output_dir, "test.log")
-    print(f"** write log to {test_log_path} **")
+    print("** write log to {} **".format(test_log_path))
     aurocs = []
     with open(test_log_path, "w") as f:
         for i in range(len(class_names)):
@@ -88,11 +88,11 @@ def main():
                 aurocs.append(score)
             except ValueError:
                 score = 0
-            f.write(f"{class_names[i]}: {score}\n")
+            f.write("{}: {}\n".format(class_names[i], score))
         mean_auroc = np.mean(aurocs)
         f.write("-------------------------\n")
-        f.write(f"mean auroc: {mean_auroc}\n")
-        print(f"mean auroc: {mean_auroc}")
+        f.write("mean auroc: {}\n".format(mean_auroc))
+        print("mean auroc: {}".format(mean_auroc))
 
 
 if __name__ == "__main__":
