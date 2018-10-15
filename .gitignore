@@ -4,6 +4,7 @@
 *.png
 *.h5
 *.hdf5
+*.yaml
 *.py[cod]
 __pycache__/
 .ipynb_checkpoints/
