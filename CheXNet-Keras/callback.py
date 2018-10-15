@@ -20,7 +20,7 @@ class MultipleClassAUROC(Callback):
         self.weights_path = weights_path
         self.best_weights_path = os.path.join(
             os.path.split(weights_path)[0],
-            f"best_{os.path.split(weights_path)[1]}",
+            "best_{}".format(os.path.split(weights_path)[1]),
         )
         self.best_auroc_log_path = os.path.join(
             os.path.split(weights_path)[0],
@@ -49,7 +49,7 @@ class MultipleClassAUROC(Callback):
         """
         print("\n*********************************")
         self.stats["lr"] = float(kb.eval(self.model.optimizer.lr))
-        print(f"current learning rate: {self.stats['lr']}")
+        print("current learning rate: {}".format(self.stats['lr']))
 
         """
         y_hat shape: (#samples, len(class_names))
@@ -58,7 +58,7 @@ class MultipleClassAUROC(Callback):
         y_hat = self.model.predict_generator(self.sequence, workers=self.workers)
         y = self.sequence.get_y_true()
 
-        print(f"*** epoch#{epoch + 1} dev auroc ***")
+        print("*** epoch#{} dev auroc ***".format(epoch + 1))
         current_auroc = []
         for i in range(len(self.class_names)):
             try:
@@ -67,28 +67,28 @@ class MultipleClassAUROC(Callback):
                 score = 0
             self.aurocs[self.class_names[i]].append(score)
             current_auroc.append(score)
-            print(f"{i+1}. {self.class_names[i]}: {score}")
+            print("{}. {}: {}".format(i+1, self.class_names[i], score))
         print("*********************************")
 
         # customize your multiple class metrics here
         mean_auroc = np.mean(current_auroc)
-        print(f"mean auroc: {mean_auroc}")
+        print("mean auroc: {}".format(mean_auroc))
         if mean_auroc > self.stats["best_mean_auroc"]:
-            print(f"update best auroc from {self.stats['best_mean_auroc']} to {mean_auroc}")
+            print("update best auroc from {} to {}".format(self.stats['best_mean_auroc'], mean_auroc))
 
             # 1. copy best model
             shutil.copy(self.weights_path, self.best_weights_path)
 
             # 2. update log file
-            print(f"update log file: {self.best_auroc_log_path}")
+            print("update log file: {}".format(self.best_auroc_log_path))
             with open(self.best_auroc_log_path, "a") as f:
-                f.write(f"(epoch#{epoch + 1}) auroc: {mean_auroc}, lr: {self.stats['lr']}\n")
+                f.write("(epoch#{}) auroc: {}, lr: {}\n".format(epoch + 1, mean_auroc, self.stats['lr']))
 
             # 3. write stats output, this is used for resuming the training
             with open(self.stats_output_path, 'w') as f:
                 json.dump(self.stats, f)
 
-            print(f"update model file: {self.weights_path} -> {self.best_weights_path}")
+            print("update model file: {} -> {}".format(self.weights_path, self.best_weights_path))
             self.stats["best_mean_auroc"] = mean_auroc
             print("*********************************")
         return

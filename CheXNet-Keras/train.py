@@ -71,12 +71,12 @@ def main():
         open(running_flag_file, "a").close()
 
     try:
-        print(f"backup config file to {output_dir}")
+        print("backup config file to {}".format(output_dir))
         shutil.copy(config_file, os.path.join(output_dir, os.path.split(config_file)[1]))
 
         datasets = ["train", "dev", "test"]
         for dataset in datasets:
-            shutil.copy(os.path.join(dataset_csv_dir, f"{dataset}.csv"), output_dir)
+            shutil.copy(os.path.join(dataset_csv_dir, "{dataset}.csv".format(dataset=dataset)), output_dir)
 
         # get train/dev sample counts
         train_counts, train_pos_counts = get_sample_counts(output_dir, "train", class_names)
@@ -89,11 +89,11 @@ def main():
             try:
                 train_steps = int(train_steps)
             except ValueError:
-                raise ValueError(f"""
-                train_steps: {train_steps} is invalid,
-                please use 'auto' or integer.
-                """)
-        print(f"** train_steps: {train_steps} **")
+                raise ValueError(" \
+                train_steps: {train_steps} is invalid, \
+                please use 'auto' or integer. \
+                ".format(train_steps=train_steps))
+        print("** train_steps: {} **".format(train_steps))
 
         if validation_steps == "auto":
             validation_steps = int(dev_counts / batch_size)
@@ -101,11 +101,11 @@ def main():
             try:
                 validation_steps = int(validation_steps)
             except ValueError:
-                raise ValueError(f"""
-                validation_steps: {validation_steps} is invalid,
-                please use 'auto' or integer.
-                """)
-        print(f"** validation_steps: {validation_steps} **")
+                raise ValueError(" \
+                validation_steps: {validation_steps} is invalid, \
+                please use 'auto' or integer. \
+                ".format(validation_steps=validation_steps))
+        print("** validation_steps: {} **".format(validation_steps))
 
         # compute class weights
         print("** compute class weights from training data **")
@@ -120,7 +120,7 @@ def main():
         print("** load model **")
         if use_trained_model_weights:
             if use_best_weights:
-                model_weights_file = os.path.join(output_dir, f"best_{output_weights_name}")
+                model_weights_file = os.path.join(output_dir, "best_{}".format(output_weights_name))
             else:
                 model_weights_file = os.path.join(output_dir, output_weights_name)
         else:
@@ -159,12 +159,12 @@ def main():
         )
 
         output_weights_path = os.path.join(output_dir, output_weights_name)
-        print(f"** set output weights path to: {output_weights_path} **")
+        print("** set output weights path to: {} **".format(output_weights_path))
 
         print("** check multiple gpu availability **")
         gpus = len(os.getenv("CUDA_VISIBLE_DEVICES", "1").split(","))
         if gpus > 1:
-            print(f"** multi_gpu_model is used! gpus={gpus} **")
+            print("** multi_gpu_model is used! gpus={} **".format(gpus))
             model_train = multi_gpu_model(model, gpus)
             # FIXME: currently (Keras 2.1.2) checkpoint doesn't work with multi_gpu_model
             checkpoint = MultiGPUModelCheckpoint(
