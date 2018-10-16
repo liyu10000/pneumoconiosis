@@ -95,3 +95,29 @@ class ModelFactory:
             print("load model weights_path: {}".format(weights_path))
             model.load_weights(weights_path)
         return model
+
+
+if __name__ == "__main__":
+    # model = ModelFactory().get_model(["a", "b"])
+    # model.summary()
+
+    
+    from keras.applications.densenet import DenseNet121
+    from keras.layers import Input
+    from keras.layers.core import Dense
+    from keras.models import Model
+
+    img_shape = (244, 244, 3)
+    img_input = Input(shape=img_shape)
+    nb_classes = 2
+
+    base_model = DenseNet121(include_top=False,
+                         input_tensor=img_input, 
+                         input_shape=img_shape, 
+                         weights='imagenet', 
+                         pooling="avg")
+    x = base_model.output
+    predictions = Dense(nb_classes, activation="sigmoid", name="predictions")(x)
+    model = Model(inputs=img_input, outputs=predictions)
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    model.summary()
