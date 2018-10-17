@@ -33,6 +33,10 @@ class DataGenerator(Sequence):
         self.augmenter = augmenters.Sequential([ augmenters.Fliplr(0.5), ], random_order=True)  # image augmentation
 
 
+    def __bool__(self):
+        return True
+
+
     def __len__(self):
         """ denotes the number of batches per epoch """
         return self.steps
@@ -46,7 +50,7 @@ class DataGenerator(Sequence):
         return batch_x, batch_y
 
 
-    def load_and_normalize(image_path, tmp_size=(256, 256), out_size=(224, 224)):
+    def load_and_normalize(self, image_path, tmp_size=(256, 256), out_size=(224, 224)):
         # read image and resize to tmp size
         image = load_img(image_path, target_size=tmp_size)
         # print("PIL image size", image.size)
@@ -55,10 +59,10 @@ class DataGenerator(Sequence):
         yoff = (tmp_size[1]-out_size[1])//2
         np_image = img_to_array(image)
         np_image = np_image[yoff:-yoff, xoff:-xoff]
-        # do normalization
+        # normalize
         np_image = np_image / 255.
-        np_image = (np_image - np.array([0.485, 0.456, 0.406])) / (np.array([0.229, 0.224, 0.225]))
         # print("numpy array size", np_image.shape)
+        # np_image = np.expand_dims(np_image, axis=0)
         return np_image
 
 
@@ -74,7 +78,7 @@ class DataGenerator(Sequence):
 
     def load_dataset(self):
         df = self.df.sample(frac=1, random_state=self.random_state)
-        self.x_path, self.y = df[self.path_key].as_matrix(), df[self.classes_key].as_matrix()
+        self.x_path, self.y = df[self.path_key].values(), df[self.classes_key].values()
 
 
     def on_epoch_end(self):
