@@ -44,10 +44,10 @@ class DataGenerator(Sequence):
 
     def __getitem__(self, index):
         batch_x_path = self.x_path[index*self.batch_size : (index+1)*self.batch_size]
-        # batch_x = np.asarray([self.load_and_normalize(x_path) for x_path in batch_x_path])
-        # batch_x = self.transform_batch(batch_x)
-        # batch_y = self.y[index*self.batch_size : (index+1)*self.batch_size]
-        # return batch_x, batch_y
+        batch_x = np.asarray([self.load_and_normalize(x_path) for x_path in batch_x_path])
+        batch_x = self.transform_batch(batch_x)
+        batch_y = self.y[index*self.batch_size : (index+1)*self.batch_size]
+        return batch_x, batch_y
 
 
     def load_and_normalize(self, image_path, tmp_size=(256, 256), out_size=(224, 224)):
@@ -78,7 +78,7 @@ class DataGenerator(Sequence):
 
     def load_dataset(self):
         df = self.df.sample(frac=1, random_state=self.random_state)
-        self.x_path, self.y = df[self.path_key].as_matrix(), df[self.classes_key].as_matrix()
+        self.x_path, self.y = df[self.path_key].values(), df[self.classes_key].values()
 
 
     def on_epoch_end(self):
