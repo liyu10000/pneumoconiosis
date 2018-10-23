@@ -25,7 +25,7 @@ Since the models described in source paper and paper by NG's group are not avail
  - _cnn5_: Used data preprocessing method by Kevin Mader and model building method by brucechou1983. Updated image proprocessing method: center cropping, 0-1 normalization, mean/std normalization. Train with 14 classes.
  - _cnn6_: Used data preprocessing method and model building method by brucechou1983. Followed the styles of optimizer, learningratescheduler, class_weights. Train with 14 classes.
  - _cnn7_: Used data preprocessing method and model building method by brucechou1983. Followed the styles of optimizer, learningratescheduler, class_weights. Train with 2 classes.
- - _cnn8_: Used InceptionV3 as base model, train on 14 classes.
+ - _cnn8_: Used InceptionV3 as base model, train on 2 classes.
 
 
 #### Useful links

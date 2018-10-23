@@ -1,5 +1,7 @@
 import os
 import json
+import numpy as np
+import pandas as pd
 from itertools import chain
 from keras import optimizers
 from keras.applications.inception_v3 import InceptionV3, preprocess_input
@@ -14,6 +16,7 @@ csv_file = "../../CHESTXRAY/Data_Entry_2017.csv"
 csv_file_encoded = "Data_Entry_2017_Encoded.csv"
 image_dir = "../../images"
 image_col = "Image Index"  # image name column in csv
+label_col = "label"        # label column in csv
 classes = ['Atelectasis','Cardiomegaly','Consolidation','Edema','Effusion',
            'Emphysema','Fibrosis','Hernia','Infiltration','Mass','Nodule',
            'Pleural_Thickening','Pneumonia','Pneumothorax']
@@ -21,7 +24,6 @@ nb_classes = len(classes)
 
 weights_pretrained = "imagenet"
 image_shape = (299, 299)
-input_shape = (299, 299, 3)
 slices = [0.8, 0.1, 0.1]  # train/valid/test
 epochs = 50
 batch_size = 32
@@ -31,14 +33,13 @@ def build_model():
     base_model = InceptionV3(weights=weights_pretrained, include_top=False)
 
     nb_gpus = len(os.getenv("CUDA_VISIBLE_DEVICES", "1").split(","))
-    input_tensor = Input(input_shape)
 
     x = base_model.output
     x = GlobalAveragePooling2D()(x)
     x = Dense(2048, activation="relu")(x)
-    predictions = Dense(nb_classes, outputs=predictions)
+    predictions = Dense(nb_classes, activation="softmax")(x)
 
-    model = Model(inputs=input_tensor, outputs=predictions)
+    model = Model(inputs=base_model.input, outputs=predictions)
     if nb_gpus > 1:
             model = multi_gpu_model(model, gpus=nb_gpus)
 
@@ -50,12 +51,12 @@ def get_generator(dataframe, horizontal_flip=False, shuffle=True):
     generator = datagen.flow_from_dataframe(dataframe=dataframe, 
                                             directory=image_dir, 
                                             x_col=image_col, 
-                                            y_col=classes, 
+                                            y_col=label_col, 
                                             has_ext=True, 
                                             target_size=image_shape,  # (height, weight)
                                             batch_size=batch_size, 
                                             shuffle=shuffle,          # shuffle images
-                                            class_mode="categorical", # class mode
+                                            class_mode="categorical",      # class mode
                                             save_to_dir=None)         # save augmented images to local
     return generator
 
@@ -90,9 +91,7 @@ def train(dataframe, model):
 def prepare_dataframe():
     df = pd.read_csv(csv_file)
     df = df.sample(frac=1)  # shuffle rows in dataframe
-    all_labels = np.unique(list(chain(*df["Finding Labels"].map(lambda x: x.split('|')).tolist())))
-    for label in all_labels:
-        df[label] = df["Finding Labels"].map(lambda x: 1 if label in x else 0)  # one-hot encoding
+    df[label_col] = df["Finding Labels"].map(lambda x: "NORMAL" if x == "No Finding" else "ABNORMAL")  # make binary labels
     df.to_csv(csv_file_encoded)
     return df
 
