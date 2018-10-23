@@ -19,11 +19,13 @@ Since the models described in source paper and paper by NG's group are not avail
 
 
 ### My exploration
- - _cnn1, cnn2_: used the data preprocessing and model building method described by Kevin Mader.
- - _cnn3_: used data preprocessing method by Kevin Mader and model building method by Caleb P.
- - _cnn4_: used data preprocessing method by Kevin Mader and model building method by brucechou1983. Updated image proprocessing method: center cropping, 0-1 normalization, mean/std normalization. Train with 2 classes.
- - _cnn5_: used data preprocessing method by Kevin Mader and model building method by brucechou1983. Updated image proprocessing method: center cropping, 0-1 normalization, mean/std normalization. Train with 14 classes.
- - _cnn6_: used data preprocessing method and model building method by brucechou1983. Followed the styles of optimizer, learningratescheduler, class_weights. Train with 14 classes.
+ - _cnn1, cnn2_: Used the data preprocessing and model building method described by Kevin Mader.
+ - _cnn3_: Used data preprocessing method by Kevin Mader and model building method by Caleb P.
+ - _cnn4_: Used data preprocessing method by Kevin Mader and model building method by brucechou1983. Updated image proprocessing method: center cropping, 0-1 normalization, mean/std normalization. Train with 2 classes.
+ - _cnn5_: Used data preprocessing method by Kevin Mader and model building method by brucechou1983. Updated image proprocessing method: center cropping, 0-1 normalization, mean/std normalization. Train with 14 classes.
+ - _cnn6_: Used data preprocessing method and model building method by brucechou1983. Followed the styles of optimizer, learningratescheduler, class_weights. Train with 14 classes.
+ - _cnn7_: Used data preprocessing method and model building method by brucechou1983. Followed the styles of optimizer, learningratescheduler, class_weights. Train with 2 classes.
+ - _cnn8_: Used InceptionV3 as base model, train on 14 classes.
 
 
 #### Useful links
