@@ -76,9 +76,9 @@ class DataGenerator(Sequence):
         return batch
 
 
-    def load_dataset(self):
+    def load_dataset(self): 
         df = self.df.sample(frac=1, random_state=self.random_state)
-        self.x_path, self.y = df[self.path_key].values(), df[self.classes_key].values()
+        self.x_path, self.y = df[self.path_key].values, df[self.classes_key].values
 
 
     def on_epoch_end(self):
