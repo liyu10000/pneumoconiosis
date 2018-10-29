@@ -18,7 +18,7 @@ class ModelFactory:
         base_model = DenseNet121(include_top=False,
                                  input_tensor=input_tensor, 
                                  input_shape=self.input_shape, 
-                                 weights='imagenet', 
+                                 weights='imagenet',  # use pretrained weights
                                  pooling="avg")
         x = base_model.output
         predictions = Dense(self.nb_classes, activation="sigmoid", name="predictions")(x)
