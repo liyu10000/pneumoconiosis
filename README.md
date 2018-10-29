@@ -28,7 +28,8 @@ Since the models described in source paper and paper by NG's group are not avail
  - _cnn8_: Used InceptionV3 as base model, train on 2 classes.
 
 ### Results
- - model trained with bruce's code, in CheXNet-Keras/experiments/1.
+ - per-class AUROC value of model trained with bruce's code, in CheXNet-Keras/experiments/1.
+ 
 |     Pathology      | [Wang et al.](https://arxiv.org/abs/1705.02315) | [Yao et al.](https://arxiv.org/abs/1710.10501) | [CheXNet](https://arxiv.org/abs/1711.05225) | Our Model |
 | :----------------: | :--------------------------------------: | :--------------------------------------: | :--------------------------------------: | :---------------------: |
 |    Atelectasis     |                  0.716                   |                  0.772                   |                  0.8094                  |         0.7810          |
