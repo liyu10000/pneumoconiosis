@@ -27,7 +27,7 @@ def create_cam(df_g, output_dir, image_source_dir, model, generator, class_names
     :param class_names: list of str
     """
     file_name = df_g["file_name"]
-    print(f"process image: {file_name}")
+    print("process image: {}".format(file_name))
 
     # draw bbox with labels
     img_ori = cv2.imread(filename=os.path.join(image_source_dir, file_name))
@@ -37,7 +37,7 @@ def create_cam(df_g, output_dir, image_source_dir, model, generator, class_names
         label = "Infiltration"
     index = class_names.index(label)
 
-    output_path = os.path.join(output_dir, f"{label}.{file_name}")
+    output_path = os.path.join(output_dir, "{}.{}".format(label, file_name))
 
     img_transformed = generator.load_image(file_name)
 
@@ -53,7 +53,7 @@ def create_cam(df_g, output_dir, image_source_dir, model, generator, class_names
     cam = np.zeros(dtype=np.float32, shape=(conv_outputs.shape[:2]))
     for i, w in enumerate(class_weights[index]):
         cam += w * conv_outputs[:, :, i]
-    # print(f"predictions: {predictions}")
+    # print("predictions: {}".format(predictions))
     cam /= np.max(cam)
     cam = cv2.resize(cam, img_ori.shape[:2])
     heatmap = cv2.applyColorMap(np.uint8(255 * cam), cv2.COLORMAP_JET)
@@ -89,7 +89,7 @@ def main():
     # parse weights file path
     output_weights_name = cp["TRAIN"].get("output_weights_name")
     weights_path = os.path.join(output_dir, output_weights_name)
-    best_weights_path = os.path.join(output_dir, f"best_{output_weights_name}")
+    best_weights_path = os.path.join(output_dir, "best_{}".format(output_weights_name))
 
     # CAM config
     bbox_list_file = cp["CAM"].get("bbox_list_file")
