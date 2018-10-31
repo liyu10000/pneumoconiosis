@@ -7,12 +7,12 @@ from keras.utils import multi_gpu_model
 
 
 class ModelFactory:
-    def __init__(self, nb_classes, input_shape):
+    def __init__(self, nb_classes, input_shape, nb_gpus=1):
         self.nb_classes = nb_classes
         self.input_shape = input_shape
+        self.nb_gpus = nb_gpus
         
     def densenet121(self):
-        nb_gpus = len(os.getenv("CUDA_VISIBLE_DEVICES", "1").split(","))
         input_tensor = Input(shape=self.input_shape)
 
         base_model = DenseNet121(include_top=False,
@@ -23,8 +23,8 @@ class ModelFactory:
         x = base_model.output
         predictions = Dense(self.nb_classes, activation="sigmoid", name="predictions")(x)
         model = Model(inputs=input_tensor, outputs=predictions)
-        if nb_gpus > 1:
-            model = multi_gpu_model(model, gpus=nb_gpus)
+        if self.nb_gpus > 1:
+            model = multi_gpu_model(model, gpus=self.nb_gpus)
         # model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
         return model
