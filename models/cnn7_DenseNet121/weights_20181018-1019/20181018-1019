@@ -1,0 +1,138 @@
+Epoch 1/200
+4906/4906 [==============================] - 1850s 377ms/step - loss: 0.6507 - acc: 0.6318 - val_loss: 0.6253 - val_acc: 0.6756
+
+Epoch 00001: saving model to weights_001_0.6253.hdf5
+Epoch 2/200
+4906/4906 [==============================] - 1844s 376ms/step - loss: 0.6226 - acc: 0.6663 - val_loss: 0.7450 - val_acc: 0.6266
+
+Epoch 00002: saving model to weights_002_0.7450.hdf5
+Epoch 3/200
+4906/4906 [==============================] - 1844s 376ms/step - loss: 0.6114 - acc: 0.6789 - val_loss: 0.5971 - val_acc: 0.6949
+
+Epoch 00003: saving model to weights_003_0.5971.hdf5
+Epoch 4/200
+4906/4906 [==============================] - 1844s 376ms/step - loss: 0.6047 - acc: 0.6838 - val_loss: 0.5914 - val_acc: 0.6939
+
+Epoch 00004: saving model to weights_004_0.5914.hdf5
+Epoch 5/200
+4906/4906 [==============================] - 1844s 376ms/step - loss: 0.6006 - acc: 0.6877 - val_loss: 0.5929 - val_acc: 0.6950
+
+Epoch 00005: saving model to weights_005_0.5929.hdf5
+Epoch 6/200
+4906/4906 [==============================] - 1844s 376ms/step - loss: 0.5961 - acc: 0.6934 - val_loss: 0.5905 - val_acc: 0.6988
+
+Epoch 00006: saving model to weights_006_0.5905.hdf5
+Epoch 7/200
+4906/4906 [==============================] - 1844s 376ms/step - loss: 0.5933 - acc: 0.6952 - val_loss: 0.5899 - val_acc: 0.6986
+
+Epoch 00007: saving model to weights_007_0.5899.hdf5
+Epoch 8/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5907 - acc: 0.6980 - val_loss: 0.5832 - val_acc: 0.7014
+
+Epoch 00008: saving model to weights_008_0.5832.hdf5
+Epoch 9/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5885 - acc: 0.6990 - val_loss: 0.5921 - val_acc: 0.6936
+
+Epoch 00009: saving model to weights_009_0.5921.hdf5
+Epoch 10/200
+4906/4906 [==============================] - 1844s 376ms/step - loss: 0.5870 - acc: 0.7016 - val_loss: 0.5944 - val_acc: 0.6941
+
+Epoch 00010: saving model to weights_010_0.5944.hdf5
+Epoch 11/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5848 - acc: 0.7034 - val_loss: 0.5892 - val_acc: 0.7045
+
+Epoch 00011: saving model to weights_011_0.5892.hdf5
+Epoch 12/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5825 - acc: 0.7059 - val_loss: 0.5793 - val_acc: 0.7092
+
+Epoch 00012: saving model to weights_012_0.5793.hdf5
+Epoch 13/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5808 - acc: 0.7063 - val_loss: 0.5969 - val_acc: 0.6958
+
+Epoch 00013: saving model to weights_013_0.5969.hdf5
+Epoch 14/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5788 - acc: 0.7094 - val_loss: 0.5752 - val_acc: 0.7110
+
+Epoch 00014: saving model to weights_014_0.5752.hdf5
+Epoch 15/200
+4906/4906 [==============================] - 1846s 376ms/step - loss: 0.5777 - acc: 0.7087 - val_loss: 0.5807 - val_acc: 0.7056
+
+Epoch 00015: saving model to weights_015_0.5807.hdf5
+Epoch 16/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5757 - acc: 0.7101 - val_loss: 0.5792 - val_acc: 0.7061
+
+Epoch 00016: saving model to weights_016_0.5792.hdf5
+Epoch 17/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5747 - acc: 0.7114 - val_loss: 0.5807 - val_acc: 0.7060
+
+Epoch 00017: saving model to weights_017_0.5807.hdf5
+Epoch 18/200
+4906/4906 [==============================] - 1846s 376ms/step - loss: 0.5724 - acc: 0.7130 - val_loss: 0.5769 - val_acc: 0.7078
+
+Epoch 00018: saving model to weights_018_0.5769.hdf5
+Epoch 19/200
+4906/4906 [==============================] - 1846s 376ms/step - loss: 0.5713 - acc: 0.7142 - val_loss: 0.5882 - val_acc: 0.6970
+
+Epoch 00019: saving model to weights_019_0.5882.hdf5
+Epoch 20/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5694 - acc: 0.7157 - val_loss: 0.5834 - val_acc: 0.7061
+
+Epoch 00020: saving model to weights_020_0.5834.hdf5
+Epoch 21/200
+4906/4906 [==============================] - 1846s 376ms/step - loss: 0.5673 - acc: 0.7171 - val_loss: 0.5783 - val_acc: 0.7100
+
+Epoch 00021: saving model to weights_021_0.5783.hdf5
+Epoch 22/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5652 - acc: 0.7196 - val_loss: 0.5789 - val_acc: 0.7143
+
+Epoch 00022: saving model to weights_022_0.5789.hdf5
+Epoch 23/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5629 - acc: 0.7197 - val_loss: 0.5773 - val_acc: 0.7086
+
+Epoch 00023: saving model to weights_023_0.5773.hdf5
+Epoch 24/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5619 - acc: 0.7209 - val_loss: 0.5872 - val_acc: 0.7008
+
+Epoch 00024: saving model to weights_024_0.5872.hdf5
+
+Epoch 00024: ReduceLROnPlateau reducing learning rate to 0.000800000037997961.
+Epoch 25/200
+4906/4906 [==============================] - 1846s 376ms/step - loss: 0.5542 - acc: 0.7265 - val_loss: 0.5925 - val_acc: 0.7041
+
+Epoch 00025: saving model to weights_025_0.5925.hdf5
+Epoch 26/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5498 - acc: 0.7308 - val_loss: 0.5859 - val_acc: 0.6978
+
+Epoch 00026: saving model to weights_026_0.5859.hdf5
+Epoch 27/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5480 - acc: 0.7320 - val_loss: 0.5803 - val_acc: 0.7060
+
+Epoch 00027: saving model to weights_027_0.5803.hdf5
+Epoch 28/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5430 - acc: 0.7344 - val_loss: 0.5978 - val_acc: 0.6906
+
+Epoch 00028: saving model to weights_028_0.5978.hdf5
+Epoch 29/200
+4906/4906 [==============================] - 1846s 376ms/step - loss: 0.5388 - acc: 0.7368 - val_loss: 0.5999 - val_acc: 0.7021
+
+Epoch 00029: saving model to weights_029_0.5999.hdf5
+Epoch 30/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5346 - acc: 0.7403 - val_loss: 0.5992 - val_acc: 0.6914
+
+Epoch 00030: saving model to weights_030_0.5992.hdf5
+Epoch 31/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5317 - acc: 0.7424 - val_loss: 0.5907 - val_acc: 0.6997
+
+Epoch 00031: saving model to weights_031_0.5907.hdf5
+Epoch 32/200
+4906/4906 [==============================] - 1846s 376ms/step - loss: 0.5255 - acc: 0.7470 - val_loss: 0.6213 - val_acc: 0.6928
+
+Epoch 00032: saving model to weights_032_0.6213.hdf5
+Epoch 33/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5209 - acc: 0.7501 - val_loss: 0.6316 - val_acc: 0.6878
+
+Epoch 00033: saving model to weights_033_0.6316.hdf5
+Epoch 34/200
+4906/4906 [==============================] - 1845s 376ms/step - loss: 0.5158 - acc: 0.7535 - val_loss: 0.6045 - val_acc: 0.6907
+
+Epoch 00034: saving model to weights_034_0.6045.hdf5
